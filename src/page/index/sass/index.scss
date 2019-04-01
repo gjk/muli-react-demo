@@ -1,0 +1,36 @@
+
+//@import '../../../assets/sass/main.scss';
+$nav-color: #F90;
+ 
+
+
+
+ .nav {
+  $width: 100%;
+  width: $width;
+  color: $color;
+  font-size: 24px;
+  @include border-radius;
+
+   .line{
+     height: 20px;
+     background: red;
+   }
+
+  p{
+    color: $color;
+  }
+}
+
+:global .bitget-img{
+  display:block;
+  width: 200px;
+  height: 200px;
+}
+
+.bg{
+  width: 100px;
+  height: 100px;
+  background: url('../../../assets/img/bg.png') center center no-repeat;
+  background-size:100% 100%;
+}

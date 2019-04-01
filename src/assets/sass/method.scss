@@ -1,0 +1,7 @@
+
+$color:red; // 变量
+@mixin border-radius{   // 宏
+         -webkit-border-radius: 5px;
+         border-radius: 5px;
+         border:1px solid green;
+}
