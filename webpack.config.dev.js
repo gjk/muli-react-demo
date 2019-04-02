@@ -57,6 +57,7 @@ function getEntry () {
 
 
   console.log(getEntry());
+  console.log(addPluginsHtml())
 //多入口配置
 
 

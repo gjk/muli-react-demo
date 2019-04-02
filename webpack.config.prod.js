@@ -54,7 +54,8 @@ function getEntry () {
          template:path.resolve(srcRoot,'page',item+'.html'),
          filename:path.resolve(distRoot,'html/page',item+'.html'),
          inject:true,
-         minify: false
+         minify: false,
+         chunks:[item]
       }))
     })
     return plugin;
@@ -63,6 +64,7 @@ function getEntry () {
 
 
   console.log(getEntry());
+  console.log(addPluginsHtml())
 
 
 //多入口配置
