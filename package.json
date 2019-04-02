@@ -4,6 +4,7 @@
   "description": "react-frist-demo",
   "main": "index.js",
   "scripts": {
+    "init": "node init.js",
     "dev": "webpack-dev-server --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js",
     "test": "webpack-dev-server --config webpack.config.test.js"
@@ -50,6 +51,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "inquirer": "^6.2.2",
     "react": "^16.8.4",
     "react-css-modules": "^4.7.9",
     "react-dom": "^16.8.4"

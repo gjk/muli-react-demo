@@ -11,6 +11,14 @@ var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 // 压缩css 
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+//css 编译
+const postcssAspectRatioMini = require('postcss-aspect-ratio-mini');
+const postcssPxToViewport = require('postcss-px-to-viewport');
+const postcssWriteSvg = require('postcss-write-svg'); // 解决移动端1px 主要使用 background  border-image 来做1px的相关处理
+const postcssCssnext = require('postcss-cssnext');
+const postcssViewportUnits = require('postcss-viewport-units');
+const cssnano = require('cssnano');
+const autoprefixer = require('autoprefixer');
 //压缩 js 
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
@@ -87,8 +95,67 @@ module.exports = {
                       publicPath: '../../../../'
                     },
                   },
-                  'css-loader',
-                  'sass-loader'
+                  {
+                    loader:'css-loader',
+                    options:{
+                        importLoaders: 1,
+                        modules: true,
+                        sourceMap:true,
+                        localIdentName: '[name]_[local]_[hash:base64:5]' 
+                    }
+                  },
+                  'sass-loader',
+                  {
+                    loader:'sass-resources-loader',
+                    options:{
+                        //resources:path.resolve(srcRoot,'/assets/sass/method.scss')
+                        resources:['src/assets/sass/main.scss','src/assets/sass/method.scss']
+                    }
+                  },
+                  {
+                    loader: 'postcss-loader',
+                    options: {
+                      // Necessary for external CSS imports to work
+                      // https://github.com/facebookincubator/create-react-app/issues/2677
+                      ident: 'postcss',
+                      plugins: () => [
+                        require('postcss-flexbugs-fixes'),
+                        autoprefixer({
+                          browsers: [
+                            '>1%',
+                            'last 4 versions',
+                            'Firefox ESR',
+                            'not ie < 9', // React doesn't support IE8 anyway
+                          ],
+                          flexbox: 'no-2009',
+                        }),                       
+                        postcssAspectRatioMini({}),
+                        postcssPxToViewport({ 
+                            viewportWidth: 750, // (Number) The width of the viewport. 
+                            viewportHeight: 1334, // (Number) The height of the viewport. 
+                            unitPrecision: 5, // (Number) The decimal numbers to allow the REM units to grow to. 
+                            viewportUnit: 'vw', // (String) Expected units. 
+                            selectorBlackList: ['.ignore', '.hairlines'], // (Array) The selectors to ignore and leave as px.  带有这两个类名的 px 不会转换
+                            minPixelValue: 1, // (Number) Set the minimum pixel value to replace. 
+                            mediaQuery: false // (Boolean) Allow px to be converted in media queries. 
+                            }),
+                        postcssWriteSvg({
+                            utf8: false
+                            }),
+                        postcssCssnext({
+                            warnForDuplicates:false,
+                            autoprefixer: false, 
+                        }),
+                        //postcssViewportUnits({}),
+                        cssnano({
+                            preset: "advanced", 
+                            autoprefixer: false, 
+                            "postcss-zindex": false 
+                            })
+                      ],
+                    },
+                },
+               
                 ],
                 include:path.resolve(srcRoot)
             },
@@ -127,7 +194,7 @@ module.exports = {
              new UglifyJsPlugin({
                 cache: true,
                 parallel: true,
-                sourceMap: true // set to true if you want JS source maps
+                sourceMap: false // set to true if you want JS source maps
               }),
               new OptimizeCSSAssetsPlugin({})
             ],
@@ -157,6 +224,6 @@ module.exports = {
         compress:true,
         port:9001
     },
-    devtool:"cheap-module-eval-source-map"
+    devtool:"cheap-module-source-map"
 
 };

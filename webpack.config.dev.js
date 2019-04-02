@@ -57,9 +57,6 @@ function getEntry () {
 
 
   console.log(getEntry());
-  console.log(path.resolve(srcRoot,'/assets/sass/method.scss'));
-
-
 //多入口配置
 
 
