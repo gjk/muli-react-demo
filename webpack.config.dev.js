@@ -48,7 +48,8 @@ function getEntry () {
          template:path.resolve(srcRoot,'page',item+'.html'),
          filename:path.resolve(distRoot,'html/page',item+'.html'),
          inject:true,
-         minify: false
+         minify: false,
+         chunks:[item]
       }))
     })
     return plugin;
