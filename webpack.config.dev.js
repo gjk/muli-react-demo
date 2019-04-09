@@ -63,7 +63,7 @@ function getEntry () {
 
 
 module.exports = {
-    
+
     mode:"development",
     // 输入配置
     // entry: [
@@ -87,7 +87,7 @@ module.exports = {
                         importLoaders: 1,
                         modules: true,
                         sourceMap:true,
-                        localIdentName: '[name]_[local]_[hash:base64:5]' 
+                        localIdentName: '[name]_[local]_[hash:base64:5]'
                     }
                 },
                 {
@@ -106,29 +106,29 @@ module.exports = {
                             'not ie < 9', // React doesn't support IE8 anyway
                           ],
                           flexbox: 'no-2009',
-                        }),                       
+                        }),
                         postcssAspectRatioMini({}),
-                        postcssPxToViewport({ 
-                            viewportWidth: 750, // (Number) The width of the viewport. 
-                            viewportHeight: 1334, // (Number) The height of the viewport. 
-                            unitPrecision: 5, // (Number) The decimal numbers to allow the REM units to grow to. 
-                            viewportUnit: 'vw', // (String) Expected units. 
+                        postcssPxToViewport({
+                            viewportWidth: 750, // (Number) The width of the viewport.
+                            viewportHeight: 1334, // (Number) The height of the viewport.
+                            unitPrecision: 5, // (Number) The decimal numbers to allow the REM units to grow to.
+                            viewportUnit: 'vw', // (String) Expected units.
                             selectorBlackList: ['.ignore', '.hairlines'], // (Array) The selectors to ignore and leave as px.  带有这两个类名的 px 不会转换
-                            minPixelValue: 1, // (Number) Set the minimum pixel value to replace. 
-                            mediaQuery: false // (Boolean) Allow px to be converted in media queries. 
+                            minPixelValue: 1, // (Number) Set the minimum pixel value to replace.
+                            mediaQuery: false // (Boolean) Allow px to be converted in media queries.
                             }),
                         postcssWriteSvg({
                             utf8: false
                             }),
                         postcssCssnext({
                             warnForDuplicates:false,
-                            autoprefixer: false, 
+                            autoprefixer: false,
                         }),
                         //postcssViewportUnits({}),
                         cssnano({
-                            preset: "advanced", 
-                            autoprefixer: false, 
-                            "postcss-zindex": false 
+                            preset: "advanced",
+                            autoprefixer: false,
+                            "postcss-zindex": false
                             })
                       ],
                     },
@@ -143,7 +143,7 @@ module.exports = {
                 }
                  ],
                   include:path.resolve(srcRoot)
-                
+
             },
             // {
             //     test:/\.scss$/,

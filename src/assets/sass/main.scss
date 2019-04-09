@@ -227,7 +227,7 @@ ins, a {
 }
 /*quick function*/
 .none{display:none;}
-.hidden {visibility: hidden;} 
+.hidden {visibility: hidden;}
 a:focus { outline:0; text-decoration:none;}
 a.focus { outline:0; text-decoration:none;}
 
@@ -441,7 +441,4 @@ table {
 td,
 th {
   padding: 0;
-}
-[v-cloak] {
-  display: none;
 }

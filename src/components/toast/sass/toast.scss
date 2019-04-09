@@ -1,0 +1,90 @@
+.toast {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+}
+
+.toast_box {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  max-width: 92%;
+  text-align: center;
+  border-radius: 1px;
+  color: #fff;
+  transform: translateX(-50%);
+}
+
+.toast_text {
+  display: inline-block;
+  text-align: center;
+  margin: 0 20px;
+  padding: 15px;
+  font-size: 24px;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.iconfont{
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  font-size: 24px !important;
+}
+
+.toast_loading {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  -webkit-animation: loading 1s steps(50, end) infinite;
+  animation: loading 1s steps(50, end) infinite;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAArCAYAAAGMZqHYAAAAAXNSR0IArs4c6QAABDZJREFUWAnVWDtvE0EQ3j2HPHgkdhAFDRI0IKXDkRI6CFDRWwhsNwF+QJB8EQIpEgjlIsEPANLYhsIlChUh0JGImC4SNCBRQIGIHV55kNwyc/Ec67u9Z5woXDOzM7Pffrs7u7e7jHl9eq20WlgsCi8/Q6fm6VU6CI+kMsgyYoQcxeVQoPYi0c6yTa0LIYY21lhZDmzW9cXSBbQQro05JoT2u1baoPCJ3rztQ1tTOxSkkk21nAHUrG13GWyPQsFg6gC6sRwJgDBtjnLtvalcYoxzk4JQKnu9XC8vy0GegV3JbJcz0Lcsd0jZNNaGEfgho3gGjqey3XKgPelNxq0UrHHEGRFMTFHGQGbOQyKmOedVI5XrxwaUHNPJjgF0kkTdnhks0HezXjy6ZrIPVEbZrrFjd5L5j7JNpbtaBnpPnWBYEW3oU4HINheg7Iyjt7zLSsAgZnq9fFWY5gNnHM5qvC6bYtgJRmWLIa09yhty+knIKz5aK7+GmD6m8REjmX3oFx/bF2kMK6KSmK+trFNr/anOtgzP2Hsp2tvIiRKXMCyZ/ahzxn8avbkDqNNXra/OkY6yUbaWkmzfvbpy/Aq1UpUJcdKmzfnbiVQubZc9FBeYC4gqhgB0J7PMiIBQetmlGDeY5IyqbjMYjI2SkZddCnZNAPpckxBi8LGeEgwdft+NX6XD66viM8XAz2UGfi5nY4HRzkNgKLmmXWvdBJjifuvAGFuIBYZjJHcRdTgTnOJ6rfhcCHaOczZtpPLnnUFeZfxHMOga+BcsIM5F077mVVFlb2zd1vZtsJwqZBfZIuUZHCNewp/qNPKHSXgFiXpG7kvTmMnJqPoVEhACyDoBxkoNquyUkcCwawQg62RrqYw0AXiZWf5eyjCTX2KC9cOecxDkN5DzTBNPurpzFedRfytsQ5HDU+wfweZg5R0KagxW5tc9nA2EOeEGYQXOqb5UvIin3zDEsDGMs07LUC+o8SB/IDm2wXG/if7FrSe1FExOCt5pNZhcQozEIhW3ntTYrl4QochRZ1qxlcC2zUeXHl+Bfydeifoa2Atwg5kc77n8CDZP+4kpEjkiGUdapOrlaZBDfvWB3Mx4MguHBS52jBxckGbhgmQ9D/iRQx9coObgAjUYvCCCkML7aQrD1LBid44c3IrDsLJiGrHWtOqLlSOMr0wywQcZF7NMdA4bvZlPocFCBuJJHt8ovfIO8w0fNu/uy31ByAa5fxfmTaP70hyy/ZaGNaa1ow+P0niTR8lYR5T8aCmh/wZsW7cSfJCpLq1ch1zOwLnvOCTRe8jpSrqn857zYUY1Yr7krPdOLsZgOzwhuHgHcgz2n2cqIKdNrxcLwmSG005leGrTjWR+gsoq6bmVFGrFN/gQiyde63VpU06hXQXkspn8lssmG4L8EOtJTsaJpWvitm+9ID9U3rZpRWJbzbm/P9TMEuiF/V0AAAAASUVORK5CYII=") no-repeat;
+  background-size: 100%;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+
+/* toast 的动画 */
+
+:global .toast-enter {
+  opacity: 0.01;
+}
+
+:global .toast-enter.toast-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+
+:global .toast-leave {
+  opacity: 1;
+}
+
+:global .toast-leave.toast-leave-active {
+  opacity: 0.01;
+  transition: opacity 250ms ease-in;
+}
