@@ -1,0 +1,53 @@
+@mixin border($w: 1px, $c: #333) {
+  border: $w solid $c;
+}
+
+.double-logo{
+  display: block;
+  width: 50%;
+  height: 50%;
+}
+.double-input{
+  @include border(2px, #444);
+
+  &:hover, &:focus{
+    @include border(2px, #89ef);
+  }
+  &:disabled{
+    background-color: #999;
+  }
+}
+
+.double-list{
+  li{
+    margin-bottom: 10px;
+    border: 1px solid #444;
+    &.li_active{
+      background-color: #999;
+    }
+  }
+}
+.double-tabs{
+  padding: 15px;
+  @include border(2px, #9e33eb);
+  span{
+
+    &.tab_active{
+      background-color: #999;
+      border: 1px solid #666;
+      border-bottom: none;
+    }
+  }
+
+  .tabs-context{
+    margin-top: 20px;
+    @include border(1px, #9e33eb)
+  }
+
+}
+
+.show-baby{
+  margin: 30px;
+  padding: 15px;
+  background-color: #ddd;
+}
