@@ -43,20 +43,18 @@ class DoubleTest extends React.Component{
   }
 
   handleInput(e) {
-    let ttt = Toast.loading({text: 'loading...'}, () => {
-      console.log('干点啥呢。。。');
-      // Toast.info({text: '关闭 loading'})
-    })
-    ttt()
-    console.log(ttt, '====tttt');
+    let toastDes = Toast.loading({text: 'loading...'})
 
+    setTimeout(() => {
+      toastDes()
+    }, 3000);
 
     this.setState({str: e.target.value})
   }
 
   // 子组件到父组件--传参的方式 1
   handleSubmit = params => () => {
-    Toast.error({text: '飞升成功之前，注定是失败的，失败的，败的，的', duration: 1000 * 60 * 10})
+    Toast.error({text: '飞升成功之前，注定是失败的，失败的，败的，的', duration: 1000 * 60 * 5})
     this.setState(prev => {
       return {btnDisabled: !prev.btnDisabled}
     });
@@ -64,7 +62,7 @@ class DoubleTest extends React.Component{
 
   // 子组件到父组件--传参的方式 2
   handleSubmit2 = params =>  {
-    Toast.success({text: '我又飞升成功啦啦啦啦啦我又飞升成功啦啦啦啦啦我又飞升成功啦啦啦啦啦我又飞升成功啦啦啦啦啦', duration: 1000 * 60 * 10})
+    Toast.success({text: '我又飞升成功啦啦啦啦啦我又飞升成功啦啦啦啦啦我又飞升成功啦啦啦啦啦我又飞升成功啦啦啦啦啦', duration: 1000 * 60 * 5})
     this.setState(prev => {
       return {btnDisabled: !prev.btnDisabled}
     });
@@ -93,7 +91,7 @@ class DoubleTest extends React.Component{
 
   // 调用子组件到方法
   babyClick = () => {
-    Toast.info({text: '啊，又显示了啊，老婆，快出来看 toast！', duration: 1000 * 60 * 10})
+    Toast.info({text: '啊，又显示了啊，老婆，快出来看 toast！', duration: 1000 * 60 * 5})
     this.refs.child.childFn()
   }
 
@@ -104,6 +102,7 @@ class DoubleTest extends React.Component{
 
   render() {
     const {tabsIndex} = this.state
+    let DoubleList2 = cssModule(DoubleList, this.props.styles);
     return (
       <div>
         <div>
@@ -122,7 +121,7 @@ class DoubleTest extends React.Component{
         <div>
           <MyButton text="提个交2" handleClick={(p) => this.handleSubmit2.bind(this, p)}></MyButton>
         </div>
-        <DoubleList handleClick={this.handleShow} list={this.state.list}></DoubleList>
+        <DoubleList2 styleName="my-list" handleClick={this.handleShow} list={this.state.list}></DoubleList2>
 
         <div styleName="double-tabs">
           <span styleName={tabsIndex == 0 ? 'tab_active' : ''} onClick={this.handleTabs(0)}>我是 tab 1</span>

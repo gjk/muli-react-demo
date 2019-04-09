@@ -29,10 +29,24 @@
 }
 
 .iconfont{
+  composes: iconfont from '../../../assets/iconfont/iconfont.css';
+
   display: inline-block;
   width: 24px;
   height: 24px;
+  margin: 2px 5px 0 0;
   font-size: 24px !important;
+}
+.icon-xinxi{
+  composes: icon-xinxi from '../../../assets/iconfont/iconfont.css';
+}
+.icon-zhengque{
+  composes: icon-zhengque from '../../../assets/iconfont/iconfont.css';
+  color: green;
+}
+.icon-cuowu{
+  composes: icon-cuowu from '../../../assets/iconfont/iconfont.css';
+  color: red;
 }
 
 .toast_loading {
@@ -70,7 +84,6 @@
 }
 
 /* toast 的动画 */
-
 :global .toast-enter {
   opacity: 0.01;
 }

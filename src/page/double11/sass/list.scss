@@ -1,0 +1,10 @@
+
+.double-list{
+  li{
+    margin-bottom: 10px;
+    border: 1px solid #444;
+    &.li_active{
+      background-color: #999;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from '../sass/index.scss';
+import styles from '../sass/list.scss';
 import cssModule from 'react-css-modules';
 
 class DoubleList extends React.Component{
@@ -29,4 +29,4 @@ DoubleList.propTypes = {
   list: PropTypes.array
 }
 
-export default cssModule(DoubleList, styles);
+export default cssModule(DoubleList, styles,{ allowMultiple: true /* 使用 styleName= 多个样式 */});

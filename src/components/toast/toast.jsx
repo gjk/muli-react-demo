@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import cssModule from 'react-css-modules';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import '../../assets/iconfont/iconfont.css'
 import styles from './sass/toast.scss'
 
 class ToastBox extends React.Component {
@@ -56,20 +55,20 @@ class ToastBox extends React.Component {
       loading: 'toast_loading'
     }
     return (
-      <div className={styles.toast}>
+      <div styleName="toast">
         <ReactCSSTransitionGroup component="div" transitionName="toast" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
           {
             notices.map(notice => (
-                <div key={notice.key} styleName="toast_box">
-                  <span styleName="toast_text">
-                    {
-                      notice.type == 'loading' ?
-                      <i styleName={icons[notice.type]}></i> :
-                      <i className={`iconfont ${icons[notice.type]}`}></i>
-                    }
-                    {notice.content}
-                  </span>
-                </div>
+              <div key={notice.key} styleName="toast_box">
+                <span styleName="toast_text">
+                  {/* {
+                    notice.type == 'loading' ?
+                    <i styleName={icons[notice.type]}></i> :
+                    <i styleName={`iconfont ${icons[notice.type]}`}></i>
+                  } */}
+                  {notice.content}
+                </span>
+              </div>
             ))
           }
         </ReactCSSTransitionGroup>
@@ -78,7 +77,7 @@ class ToastBox extends React.Component {
   }
 }
 
-const ToastComponent = cssModule(ToastBox, styles);
+const ToastComponent = cssModule(ToastBox, styles, { allowMultiple: true/* 使用 styleName= 多个样式 */, handleNotFoundStyleName: 'ignore' });
 
 function createNotification() {
   const div = document.createElement('div')
